@@ -511,7 +511,7 @@ public class ApCompiladorPilaAtributos {
 
     }
 
-    public static void proceso1() { // OKAY
+    public static void proceso1() { // ! listo ?
 
         int u = analizador.ultimo();
         NoTerminal i1 = new NoTerminal("i1", 0, 0);
@@ -519,6 +519,7 @@ public class ApCompiladorPilaAtributos {
         NoTerminal s1 = new NoTerminal("s1", u, 0);
         NoTerminal ELO = new NoTerminal("ELO", 0, 0);
 
+        analizador.removeNodo(u);
         analizador.adicionarNodo(i1); // Push(i1
         analizador.adicionarNodo(res); // Push(res)
         analizador.adicionarNodo(s1); // Push(s1)
@@ -536,6 +537,7 @@ public class ApCompiladorPilaAtributos {
         NoTerminal EL2 = new NoTerminal("EL2", 0, 0);
 
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3); // Push(i1
         analizador.adicionarNodo(i1); // Push(i1
         analizador.adicionarNodo(ELOL); // Push(i1
@@ -544,23 +546,25 @@ public class ApCompiladorPilaAtributos {
     }
 
     public static void proceso3() { // TODO
-        NoTerminal nt;
 
         int u = analizador.ultimo();
 
-        NoTerminal s5 = new NoTerminal("s5", u - 2, 0);
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+
+        NoTerminal s5 = new NoTerminal("s5", s1.getDirec(), 0);
         NoTerminal i6 = new NoTerminal("i6", 0, 0);
         NoTerminal ELOL = new NoTerminal("ELOL", 0, 0);
-        NoTerminal s4 = new NoTerminal("s4", u + 1, 0);
+        NoTerminal s4 = new NoTerminal("s4", 0, 0);
         NoTerminal i5 = new NoTerminal("i5", 0, 0);
         NoTerminal i4 = new NoTerminal("i4", 0, 0);
         NoTerminal procOr = new NoTerminal("procOr", 0, 0);
-        NoTerminal i3 = new NoTerminal("i3", u - 2, 0); // TODO s3
+        NoTerminal i3 = new NoTerminal("i3", 0, 0); // TODO s3
         NoTerminal i2 = new NoTerminal("i2", 0, 0);
         NoTerminal pRelacional = new NoTerminal("pRelacional", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", u - 1, 0);
+        NoTerminal s2 = new NoTerminal("s2", 0, 0);
         NoTerminal EL2 = new NoTerminal("EL2", 0, 0);
-        NoTerminal or = new NoTerminal("or", 0, 0); // TODO como se pone
+        // NoTerminal or = new NoTerminal("or", 0, 0); // TODO como se pone
 
         /*
          * 3. <ELO_L> i1,s1 -> | <EL2> s2{pRelacional} i2,i3 {procOR} i4,i5,s4 <ELO_L>
@@ -569,6 +573,8 @@ public class ApCompiladorPilaAtributos {
          */
 
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s5);
         analizador.adicionarNodo(i6);
         analizador.adicionarNodo(ELOL);
@@ -581,7 +587,7 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(pRelacional);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(EL2);
-        analizador.adicionarNodo(or);
+        // analizador.adicionarNodo(or);
 
         avance();
     }
@@ -595,15 +601,16 @@ public class ApCompiladorPilaAtributos {
 
     }
 
-    public static void proceso5() {
+    public static void proceso5() { // ! listo ?
         int u = analizador.ultimo();
         NoTerminal s1 = analizador.getnode(u - 1);
         NoTerminal s3 = new NoTerminal("s3", s1.getDirec(), 0);
         NoTerminal i1 = new NoTerminal("i1", 0, 0);
         NoTerminal EL2L = new NoTerminal("EL2L", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", u + 1, 0);
+        NoTerminal s2 = new NoTerminal("s2", u, 0);
         NoTerminal ER = new NoTerminal("ER", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i1);
         analizador.adicionarNodo(EL2L);
@@ -611,7 +618,7 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(ER);
     }
 
-    public static void proceso6() {
+    public static void proceso6() { // TODO
 
         int u = analizador.ultimo();
         NoTerminal s5 = new NoTerminal("s5", u - 1, 0);
@@ -653,15 +660,16 @@ public class ApCompiladorPilaAtributos {
         analizador.removeNodo(u);
     }
 
-    public static void proceso8() { // OKAY
+    public static void proceso8() { // ! listo ?
         int u = analizador.ultimo();
         NoTerminal s1 = analizador.getnode(u - 1);
         NoTerminal s3 = new NoTerminal("s3", s1.getDirec(), 0);
         NoTerminal i1 = new NoTerminal("i1", 0, 0);
         NoTerminal ERL = new NoTerminal("ERL", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", u + 1, 0);
+        NoTerminal s2 = new NoTerminal("s2", u, 0);
         NoTerminal E = new NoTerminal("E", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i1);
         analizador.adicionarNodo(ERL);
@@ -669,21 +677,23 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(E);
     }
 
-    public static void proceso9() {
-        NoTerminal i1;
+    public static void proceso9() { // ! Listo ?
         int u = analizador.ultimo();
-        // i1 = analizador.getnode(u - 1);
-        // i1.setDirec(u + 3);
-        NoTerminal s4 = new NoTerminal("s4", u - 2, 0);
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
         NoTerminal i4 = new NoTerminal("i4", 0, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", u + 1, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
         NoTerminal pComparar = new NoTerminal("pComparar", 0, 0);
-        NoTerminal s3 = new NoTerminal("s3", u + 2, 0);
+        NoTerminal s3 = new NoTerminal("s3", u, 0);
         NoTerminal E = new NoTerminal("E", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", u, 0);
+        NoTerminal s2 = new NoTerminal("s2", u - 1, 0);
+        NoTerminal OR = new NoTerminal("OR", 0, 0);
 
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s4);
         analizador.adicionarNodo(i4);
         analizador.adicionarNodo(i3);
@@ -692,6 +702,7 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(E);
         analizador.adicionarNodo(s2);
+        analizador.adicionarNodo(OR);
 
     }
 
@@ -703,12 +714,13 @@ public class ApCompiladorPilaAtributos {
         analizador.removeNodo(u);
     }
 
-    public static void proceso11() { // OKAY
+    public static void proceso11() { // ! listo ?
         int u = analizador.ultimo();
         NoTerminal s1 = analizador.getnode(u - 1);
         NoTerminal s2 = new NoTerminal("s2", s1.getDirec(), 0);
         NoTerminal ME = new NoTerminal("ME", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(ME);
         avance();
@@ -726,12 +738,13 @@ public class ApCompiladorPilaAtributos {
 
     }
 
-    public static void proceso14() { // OKAY
+    public static void proceso14() { // ! listo ?
         int u = analizador.ultimo();
         NoTerminal s1 = analizador.getnode(u - 1);
         NoTerminal s2 = new NoTerminal("s2", s1.getDirec(), 0);
         NoTerminal MA = new NoTerminal("MA", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(MA);
         avance();
@@ -749,12 +762,13 @@ public class ApCompiladorPilaAtributos {
         analizador.removeNodo(u);
     }
 
-    public static void proceso17() { // OKAY
+    public static void proceso17() { // ! listo ?
         int u = analizador.ultimo();
         NoTerminal s1 = analizador.getnode(u - 1);
         NoTerminal s2 = new NoTerminal("s2", s1.getDirec(), 0);
         NoTerminal IG = new NoTerminal("IG", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(IG);
         avance();
@@ -772,6 +786,7 @@ public class ApCompiladorPilaAtributos {
         NoTerminal s2 = new NoTerminal("s2", s1.getDirec(), 0);
         NoTerminal DI = new NoTerminal("DI", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(DI);
     }
@@ -788,9 +803,10 @@ public class ApCompiladorPilaAtributos {
         NoTerminal s3 = new NoTerminal("s3", s1.getDirec(), 0);
         NoTerminal i1 = new NoTerminal("i1", 0, 0);
         NoTerminal EL = new NoTerminal("EL", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", u + 1, 0);
+        NoTerminal s2 = new NoTerminal("s2", u, 0);
         NoTerminal T = new NoTerminal("T", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i1);
         analizador.adicionarNodo(EL);
@@ -800,16 +816,21 @@ public class ApCompiladorPilaAtributos {
 
     public static void proceso22() {
         int u = analizador.ultimo();
-        NoTerminal s4 = new NoTerminal("s4", u - 2, 0);
-        NoTerminal i4 = new NoTerminal("i4", u - 2, 0);
-        NoTerminal EL = new NoTerminal("EL", u - 2, 0);
-        NoTerminal s3 = new NoTerminal("s3", u - 2, 0);
-        NoTerminal i3 = new NoTerminal("i3", u - 2, 0);
-        NoTerminal i2 = new NoTerminal("i2", u - 2, 0);
-        NoTerminal suma = new NoTerminal("suma", u - 2, 0);
-        NoTerminal s2 = new NoTerminal("s2", u - 2, 0);
-        NoTerminal T = new NoTerminal("T", u - 2, 0);
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+
+        NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
+        NoTerminal i4 = new NoTerminal("i4", 0, 0);
+        NoTerminal EL = new NoTerminal("EL", 0, 0);
+        NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
+        NoTerminal i3 = new NoTerminal("i3", 0, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal suma = new NoTerminal("suma", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
+        NoTerminal T = new NoTerminal("T", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s4);
         analizador.adicionarNodo(i4);
         analizador.adicionarNodo(EL);
@@ -824,16 +845,21 @@ public class ApCompiladorPilaAtributos {
 
     public static void proceso23() {
         int u = analizador.ultimo();
-        NoTerminal s4 = new NoTerminal("s4", u - 2, 0);
-        NoTerminal i4 = new NoTerminal("i4", u - 2, 0);
-        NoTerminal EL = new NoTerminal("EL", u - 2, 0);
-        NoTerminal s3 = new NoTerminal("s3", u - 2, 0);
-        NoTerminal i3 = new NoTerminal("i3", u - 2, 0);
-        NoTerminal i2 = new NoTerminal("i2", u - 2, 0);
-        NoTerminal resta = new NoTerminal("resta", u - 2, 0);
-        NoTerminal s2 = new NoTerminal("s2", u - 2, 0);
-        NoTerminal T = new NoTerminal("T", u - 2, 0);
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+
+        NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
+        NoTerminal i4 = new NoTerminal("i4", 0, 0);
+        NoTerminal EL = new NoTerminal("EL", 0, 0);
+        NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
+        NoTerminal i3 = new NoTerminal("i3", 0, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal resta = new NoTerminal("resta", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
+        NoTerminal T = new NoTerminal("T", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s4);
         analizador.adicionarNodo(i4);
         analizador.adicionarNodo(EL);
@@ -844,6 +870,7 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(T);
         avance();
+
     }
 
     public static void proceso24() { // TODO
@@ -858,9 +885,10 @@ public class ApCompiladorPilaAtributos {
         NoTerminal s3 = new NoTerminal("s3", s1.getDirec(), 0);
         NoTerminal i1 = new NoTerminal("i1", 0, 0);
         NoTerminal TL = new NoTerminal("TL", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", u + 1, 0);
+        NoTerminal s2 = new NoTerminal("s2", u, 0);
         NoTerminal F = new NoTerminal("F", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i1);
         analizador.adicionarNodo(TL);
@@ -868,18 +896,23 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(F);
     }
 
-    public static void proceso26() {
+    public static void proceso26() { // ! listo ?
         int u = analizador.ultimo();
-        NoTerminal s4 = new NoTerminal("s4", u - 2, 0);
-        NoTerminal i4 = new NoTerminal("i4", u - 2, 0);
-        NoTerminal TL = new NoTerminal("TL", u - 2, 0);
-        NoTerminal s3 = new NoTerminal("s3", u - 2, 0);
-        NoTerminal i3 = new NoTerminal("i3", u - 2, 0);
-        NoTerminal i2 = new NoTerminal("i2", u - 2, 0);
-        NoTerminal mul = new NoTerminal("mul", u - 2, 0);
-        NoTerminal s2 = new NoTerminal("s2", u - 2, 0);
-        NoTerminal F = new NoTerminal("F", u - 2, 0);
+
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
+        NoTerminal i4 = new NoTerminal("i4", 0, 0);
+        NoTerminal TL = new NoTerminal("TL", 0, 0);
+        NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
+        NoTerminal i3 = new NoTerminal("i3", 0, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal mul = new NoTerminal("mul", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
+        NoTerminal F = new NoTerminal("F", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s4);
         analizador.adicionarNodo(i4);
         analizador.adicionarNodo(TL);
@@ -892,18 +925,23 @@ public class ApCompiladorPilaAtributos {
         avance();
     }
 
-    public static void proceso27() {
+    public static void proceso27() { // ! listo ?
         int u = analizador.ultimo();
-        NoTerminal s4 = new NoTerminal("s4", u - 2, 0);
-        NoTerminal i4 = new NoTerminal("i4", u - 2, 0);
-        NoTerminal TL = new NoTerminal("TL", u - 2, 0);
-        NoTerminal s3 = new NoTerminal("s3", u - 2, 0);
-        NoTerminal i3 = new NoTerminal("i3", u - 2, 0);
-        NoTerminal i2 = new NoTerminal("i2", u - 2, 0);
-        NoTerminal div = new NoTerminal("div", u - 2, 0);
-        NoTerminal s2 = new NoTerminal("s2", u - 2, 0);
-        NoTerminal F = new NoTerminal("F", u - 2, 0);
+
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
+        NoTerminal i4 = new NoTerminal("i4", 0, 0);
+        NoTerminal TL = new NoTerminal("TL", 0, 0);
+        NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
+        NoTerminal i3 = new NoTerminal("i3", 0, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal div = new NoTerminal("div", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
+        NoTerminal F = new NoTerminal("F", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s4);
         analizador.adicionarNodo(i4);
         analizador.adicionarNodo(TL);
@@ -927,11 +965,12 @@ public class ApCompiladorPilaAtributos {
         int u = analizador.ultimo();
         NoTerminal s1 = analizador.getnode(u - 1);
         NoTerminal s3 = new NoTerminal("s3", s1.getDirec(), 0);
-        NoTerminal i1 = new NoTerminal("i1", u, 0);
-        NoTerminal FL = new NoTerminal("FL", u, 0);
-        NoTerminal s2 = new NoTerminal("s2", u + 1, 0);
-        NoTerminal P = new NoTerminal("P", u, 0);
+        NoTerminal i1 = new NoTerminal("i1", 0, 0);
+        NoTerminal FL = new NoTerminal("FL", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u, 0);
+        NoTerminal P = new NoTerminal("P", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i1);
         analizador.adicionarNodo(FL);
@@ -941,16 +980,22 @@ public class ApCompiladorPilaAtributos {
 
     public static void proceso30() {
         int u = analizador.ultimo();
-        NoTerminal s4 = new NoTerminal("s4", u - 2, 0);
-        NoTerminal i4 = new NoTerminal("i4", u - 2, 0);
-        NoTerminal FL = new NoTerminal("FL", u - 2, 0);
-        NoTerminal s3 = new NoTerminal("s3", u - 2, 0);
-        NoTerminal i3 = new NoTerminal("i3", u - 2, 0);
-        NoTerminal i2 = new NoTerminal("i2", u - 2, 0);
-        NoTerminal exp = new NoTerminal("exp", u - 2, 0);
-        NoTerminal s2 = new NoTerminal("s2", u - 2, 0);
-        NoTerminal P = new NoTerminal("P", u - 2, 0);
+
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+
+        NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
+        NoTerminal i4 = new NoTerminal("i4", 0, 0);
+        NoTerminal FL = new NoTerminal("FL", 0, 0);
+        NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
+        NoTerminal i3 = new NoTerminal("i3", 0, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal exp = new NoTerminal("exp", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
+        NoTerminal P = new NoTerminal("P", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s4);
         analizador.adicionarNodo(i4);
         analizador.adicionarNodo(FL);
