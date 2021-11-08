@@ -33,11 +33,12 @@ public class NoTerminal {
         valorLogico = false;
     }
 
-    public NoTerminal(String nom, int val1, double val2, boolean vl) {
+    public NoTerminal(String nom, int val1, double val2, boolean vl, boolean rel) {
         nombre = nom;
         direc = val1;
         valor = val2;
         valorLogico = vl;
+        relacional = rel;
     }
 
     public String getNombre() {
@@ -82,6 +83,7 @@ public class NoTerminal {
     }
 
     public String toString() {
-        return "nombre: " + nombre + " valor: " + valor + " valor logico: " + valorLogico;
+        return "nombre: " + nombre + " valor: " + valor + " valor logico: " + valorLogico + " relacional: "
+                + relacional;
     }
 }
