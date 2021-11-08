@@ -14,45 +14,51 @@ import java.util.*;
 public class Analizador {
 
     private ArrayList<NoTerminal> pila;
-    
+
     // metodos
-    
-    public Analizador(){
+
+    public Analizador() {
         pila = new ArrayList();
     }
-    
-    public int ultimo(){
-        return pila.size()-1;
+
+    public int ultimo() {
+        return pila.size() - 1;
     }
-    
-    public NoTerminal getnode(int u){
-        return (NoTerminal)pila.get(u);
+
+    public NoTerminal getnode(int u) {
+        return (NoTerminal) pila.get(u);
     }
-    
-    public void removeNodo(int i){
+
+    public void removeNodo(int i) {
         pila.remove(i);
     }
-    
-    public void adicionarNodo(NoTerminal nt){
+
+    public void adicionarNodo(NoTerminal nt) {
         pila.add(nt);
         toString();
-    
+
     }
 
     @Override
     public String toString() {
-        return "Analizador{" + "pila=" + pila + '}';
+        String tmp = "Analizador{" + "pila=";
+
+        for (NoTerminal nt : pila) {
+            tmp += " " + nt + " \n";
+        }
+        tmp += '}';
+
+        return tmp;
     }
-    
-    public void mostrarCadenaPila(){
-        int tam=pila.size();
+
+    public void mostrarCadenaPila() {
+        int tam = pila.size();
         NoTerminal nt;
-        for (int i=0;i<tam;i++){
-            nt=pila.get(i);
-            System.out.println("indice "+i+" nombre "+nt.getNombre()+" direc "+nt.getDirec()+
-                    " valor " + nt.getValor());
+        for (int i = 0; i < tam; i++) {
+            nt = pila.get(i);
+            System.out.println("indice " + i + " nombre " + nt.getNombre() + " direc " + nt.getDirec() + " valor "
+                    + nt.getValor());
         }
     }
-    
-   
+
 }

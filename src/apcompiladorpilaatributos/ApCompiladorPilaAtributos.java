@@ -4,8 +4,9 @@
 // 2.<E>      --> +<E><E>{suma}               Selección(2)={(,I}
 // 3.<E>    -->   *<E><E>{mult}               Selección(3)={+}
 // 4.<E>    -->   I                           Selección (4)= I
-
 package apcompiladorpilaatributos;
+
+import java.lang.Math;
 
 public class ApCompiladorPilaAtributos {
 
@@ -14,12 +15,13 @@ public class ApCompiladorPilaAtributos {
     // static String cad="((((5+3)))+5+3+2)-1¬";
     static String cad1 = "0123456789.";
 
-    static String cad = "+5*4 3¬";
+    static String cad = "5>3¬";
     static int indice = 0;
     static char sim = ' ';
     static Lexico lex1 = new Lexico();
     static String cadavance = "";
     static Analizador analizador = new Analizador();
+    static final boolean DEBUG = true;
 
     public static void main(String[] args) {
 
@@ -46,6 +48,10 @@ public class ApCompiladorPilaAtributos {
         // segundo para evaluar los símbolos de pila
 
         do {
+            if (DEBUG) {
+                System.out.println(sim);
+                System.out.println(analizador);
+            }
             switch (sim) {
             // los símbolos de entrada son i,+,*
             case 'i':
@@ -93,26 +99,48 @@ public class ApCompiladorPilaAtributos {
                     proceso33();
                     analizador.mostrarCadenaPila();
                     break;
-                // case "suma":
-                // break;
-                // case "resta":
-                // break;
-                // case "mul":
-                // break;
-                // case "div":
-                // break;
-                // case "exp":
-                // break;
-                // case "procOr":
-                // break;
-                // case "procAnd":
-                // break;
-                // case "pRelacion":
-                // break;
-                // case "pComparar":
-                // break;
-                // case "res":
-                // break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -132,6 +160,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -151,6 +221,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -166,6 +278,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
 
@@ -182,6 +336,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -193,9 +389,50 @@ public class ApCompiladorPilaAtributos {
                     proceso30();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
-
                 }
                 break;
             case '<':
@@ -221,6 +458,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -248,6 +527,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -291,6 +612,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -318,6 +681,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -350,6 +755,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -377,6 +824,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -425,15 +914,59 @@ public class ApCompiladorPilaAtributos {
                     proceso32();
                     analizador.mostrarCadenaPila();
                     break;
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
-
                 }
                 break;
             case ')':
                 nt = analizador.getnode(analizador.ultimo());
                 switch (nt.getNombre()) {
-
+                case ")":
+                    analizador.removeNodo(analizador.ultimo());
+                    avance();
+                    break;
                 case "ELOL":
                     proceso4();
                     analizador.mostrarCadenaPila();
@@ -458,17 +991,55 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
-
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
-
                 }
                 break;
-
             case '¬':
                 nt = analizador.getnode(analizador.ultimo());
                 switch (nt.getNombre()) {
-
                 case "ELOL":
                     proceso4();
                     analizador.mostrarCadenaPila();
@@ -493,7 +1064,48 @@ public class ApCompiladorPilaAtributos {
                     proceso31();
                     analizador.mostrarCadenaPila();
                     break;
-
+                // ###########################################################################################################################
+                case "suma":
+                    suma();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resta":
+                    resta();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "mul":
+                    mult();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "div":
+                    div();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "exp":
+                    exp();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procOr":
+                    procOr();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "procAnd":
+                    procAnd();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pRelacion":
+                    pRelacional();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "pComparar":
+                    pComparar();
+                    analizador.mostrarCadenaPila();
+                    break;
+                case "resultado":
+                    resultado();
+                    analizador.mostrarCadenaPila();
+                    break;
+                // ###########################################################################################################################
                 default:
                     rechace();
                 }
@@ -520,13 +1132,13 @@ public class ApCompiladorPilaAtributos {
         NoTerminal ELO = new NoTerminal("ELO", 0, 0);
 
         analizador.removeNodo(u);
-        analizador.adicionarNodo(i1); // Push(i1
+        analizador.adicionarNodo(i1); // Push(i1)
         analizador.adicionarNodo(res); // Push(res)
         analizador.adicionarNodo(s1); // Push(s1)
         analizador.adicionarNodo(ELO); // Push(E)
     }
 
-    public static void proceso2() { // ! OKAY
+    public static void proceso2() { // ! listo ?
 
         int u = analizador.ultimo();
         NoTerminal s1 = analizador.getnode(u - 1);
@@ -557,14 +1169,13 @@ public class ApCompiladorPilaAtributos {
         NoTerminal ELOL = new NoTerminal("ELOL", 0, 0);
         NoTerminal s4 = new NoTerminal("s4", 0, 0);
         NoTerminal i5 = new NoTerminal("i5", 0, 0);
-        NoTerminal i4 = new NoTerminal("i4", 0, 0);
+        NoTerminal i4 = new NoTerminal("i4", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal procOr = new NoTerminal("procOr", 0, 0);
-        NoTerminal i3 = new NoTerminal("i3", 0, 0); // TODO s3
-        NoTerminal i2 = new NoTerminal("i2", 0, 0);
+        NoTerminal i3 = new NoTerminal("i3", 0, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal pRelacional = new NoTerminal("pRelacional", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u + 5, 0);
         NoTerminal EL2 = new NoTerminal("EL2", 0, 0);
-        // NoTerminal or = new NoTerminal("or", 0, 0); // TODO como se pone
 
         /*
          * 3. <ELO_L> i1,s1 -> | <EL2> s2{pRelacional} i2,i3 {procOR} i4,i5,s4 <ELO_L>
@@ -587,18 +1198,21 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(pRelacional);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(EL2);
-        // analizador.adicionarNodo(or);
 
         avance();
     }
 
-    public static void proceso4() {
-        NoTerminal nt;
-        int u = analizador.ultimo();
-        nt = analizador.getnode(u - 1);
-        nt.setDirec(u - 2);
-        analizador.removeNodo(u);
+    public static void proceso4() { // ! listo ?
 
+        int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(i1.getValor());
+        nt.setValorLogico(i1.getValorLogico());
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
     }
 
     public static void proceso5() { // ! listo ?
@@ -621,20 +1235,26 @@ public class ApCompiladorPilaAtributos {
     public static void proceso6() { // TODO
 
         int u = analizador.ultimo();
-        NoTerminal s5 = new NoTerminal("s5", u - 1, 0);
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+
+        NoTerminal s5 = new NoTerminal("s5", s1.getDirec(), 0);
         NoTerminal i6 = new NoTerminal("i6", 0, 0);
         NoTerminal EL2L = new NoTerminal("EL2L", 0, 0);
         NoTerminal s4 = new NoTerminal("s4", u + 1, 0);
         NoTerminal i5 = new NoTerminal("i5", 0, 0);
-        NoTerminal i4 = new NoTerminal("i4", 0, 0);
+        NoTerminal i4 = new NoTerminal("i4", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal procAnd = new NoTerminal("procAnd", 0, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", 0, 0);
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal pRelacional = new NoTerminal("pRelacional", 0, 0);
-        NoTerminal s2 = new NoTerminal("s2", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", u + 5, 0);
         NoTerminal ER = new NoTerminal("ER", 0, 0);
-        // NoTerminal and = new NoTerminal("ER", 0, 0); // TODO se pone?
+
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
+
         analizador.adicionarNodo(s5);
         analizador.adicionarNodo(i6);
         analizador.adicionarNodo(EL2L);
@@ -647,17 +1267,19 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(pRelacional);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(ER);
-        // analizador.adicionarNodo(and); // TODO se pone?
-
         avance();
     }
 
-    public static void proceso7() {
-        NoTerminal nt;
+    public static void proceso7() { // ! listo ?
         int u = analizador.ultimo();
-        nt = analizador.getnode(u - 1);
-        nt.setDirec(u - 2);
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(i1.getValor());
+        nt.setValorLogico(i1.getValorLogico());
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
     }
 
     public static void proceso8() { // ! listo ?
@@ -684,7 +1306,7 @@ public class ApCompiladorPilaAtributos {
         NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
         NoTerminal i4 = new NoTerminal("i4", 0, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal pComparar = new NoTerminal("pComparar", 0, 0);
         NoTerminal s3 = new NoTerminal("s3", u, 0);
         NoTerminal E = new NoTerminal("E", 0, 0);
@@ -703,15 +1325,18 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(E);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(OR);
-
     }
 
-    public static void proceso10() { // TODO
-        NoTerminal nt;
+    public static void proceso10() { // ! listo ?
         int u = analizador.ultimo();
-        nt = analizador.getnode(u - 1);
-        nt.setDirec(u - 2);
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(i1.getValor());
+        nt.setValorLogico(i1.getValorLogico());
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
     }
 
     public static void proceso11() { // ! listo ?
@@ -726,16 +1351,24 @@ public class ApCompiladorPilaAtributos {
         avance();
     }
 
-    public static void proceso12() { // TODO
+    public static void proceso12() { // ! listo ?
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(1);
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         avance();
     }
 
-    public static void proceso13() { // TODO
+    public static void proceso13() { // ! listo ?
 
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(2);
         analizador.removeNodo(u);
-
+        analizador.removeNodo(u - 1);
     }
 
     public static void proceso14() { // ! listo ?
@@ -750,16 +1383,23 @@ public class ApCompiladorPilaAtributos {
         avance();
     }
 
-    public static void proceso15() { // TODO
+    public static void proceso15() { // ! listo ?
         int u = analizador.ultimo();
-
+        NoTerminal s1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(3);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         avance();
     }
 
-    public static void proceso16() { // TODO
+    public static void proceso16() { // ! listo ?
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(4);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
     }
 
     public static void proceso17() { // ! listo ?
@@ -774,9 +1414,13 @@ public class ApCompiladorPilaAtributos {
         avance();
     }
 
-    public static void proceso18() { // TODO
+    public static void proceso18() { // ! listo ?
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(5);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         avance();
     }
 
@@ -789,11 +1433,16 @@ public class ApCompiladorPilaAtributos {
         analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(DI);
+        avance();
     }
 
-    public static void proceso20() { // TODO
+    public static void proceso20() { // ! listo ?
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(6);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
         avance();
     }
 
@@ -824,7 +1473,7 @@ public class ApCompiladorPilaAtributos {
         NoTerminal EL = new NoTerminal("EL", 0, 0);
         NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal suma = new NoTerminal("suma", 0, 0);
         NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
         NoTerminal T = new NoTerminal("T", 0, 0);
@@ -853,7 +1502,7 @@ public class ApCompiladorPilaAtributos {
         NoTerminal EL = new NoTerminal("EL", 0, 0);
         NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal resta = new NoTerminal("resta", 0, 0);
         NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
         NoTerminal T = new NoTerminal("T", 0, 0);
@@ -873,9 +1522,16 @@ public class ApCompiladorPilaAtributos {
 
     }
 
-    public static void proceso24() { // TODO
+    public static void proceso24() { // ! listo ?
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(i1.getValor());
+        nt.setValorLogico(i1.getValorLogico());
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
     }
 
     public static void proceso25() { // ! Listo ?
@@ -886,14 +1542,14 @@ public class ApCompiladorPilaAtributos {
         NoTerminal i1 = new NoTerminal("i1", 0, 0);
         NoTerminal TL = new NoTerminal("TL", 0, 0);
         NoTerminal s2 = new NoTerminal("s2", u, 0);
-        NoTerminal F = new NoTerminal("F", 0, 0);
+        NoTerminal P = new NoTerminal("P", 0, 0);
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i1);
         analizador.adicionarNodo(TL);
         analizador.adicionarNodo(s2);
-        analizador.adicionarNodo(F);
+        analizador.adicionarNodo(P);
     }
 
     public static void proceso26() { // ! listo ?
@@ -906,10 +1562,10 @@ public class ApCompiladorPilaAtributos {
         NoTerminal TL = new NoTerminal("TL", 0, 0);
         NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal mul = new NoTerminal("mul", 0, 0);
         NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
-        NoTerminal F = new NoTerminal("F", 0, 0);
+        NoTerminal P = new NoTerminal("P", 0, 0);
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
         analizador.removeNodo(u - 2);
@@ -921,7 +1577,7 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(i2);
         analizador.adicionarNodo(mul);
         analizador.adicionarNodo(s2);
-        analizador.adicionarNodo(F);
+        analizador.adicionarNodo(P);
         avance();
     }
 
@@ -935,10 +1591,10 @@ public class ApCompiladorPilaAtributos {
         NoTerminal TL = new NoTerminal("TL", 0, 0);
         NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal div = new NoTerminal("div", 0, 0);
         NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
-        NoTerminal F = new NoTerminal("F", 0, 0);
+        NoTerminal P = new NoTerminal("P", 0, 0);
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
         analizador.removeNodo(u - 2);
@@ -950,14 +1606,21 @@ public class ApCompiladorPilaAtributos {
         analizador.adicionarNodo(i2);
         analizador.adicionarNodo(div);
         analizador.adicionarNodo(s2);
-        analizador.adicionarNodo(F);
+        analizador.adicionarNodo(P);
         avance();
 
     }
 
-    public static void proceso28() { // TODO
+    public static void proceso28() { // ! listo ?
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(i1.getValor());
+        nt.setValorLogico(i1.getValorLogico());
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
     }
 
     public static void proceso29() { // ! listo ?
@@ -966,16 +1629,16 @@ public class ApCompiladorPilaAtributos {
         NoTerminal s1 = analizador.getnode(u - 1);
         NoTerminal s3 = new NoTerminal("s3", s1.getDirec(), 0);
         NoTerminal i1 = new NoTerminal("i1", 0, 0);
-        NoTerminal FL = new NoTerminal("FL", 0, 0);
+        NoTerminal PL = new NoTerminal("PL", 0, 0);
         NoTerminal s2 = new NoTerminal("s2", u, 0);
-        NoTerminal P = new NoTerminal("P", 0, 0);
+        NoTerminal F = new NoTerminal("F", 0, 0);
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i1);
-        analizador.adicionarNodo(FL);
+        analizador.adicionarNodo(PL);
         analizador.adicionarNodo(s2);
-        analizador.adicionarNodo(P);
+        analizador.adicionarNodo(F);
     }
 
     public static void proceso30() {
@@ -986,38 +1649,49 @@ public class ApCompiladorPilaAtributos {
 
         NoTerminal s4 = new NoTerminal("s4", s1.getDirec(), 0);
         NoTerminal i4 = new NoTerminal("i4", 0, 0);
-        NoTerminal FL = new NoTerminal("FL", 0, 0);
+        NoTerminal PL = new NoTerminal("PL", 0, 0);
         NoTerminal s3 = new NoTerminal("s3", u - 1, 0);
         NoTerminal i3 = new NoTerminal("i3", 0, 0);
-        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor());
+        NoTerminal i2 = new NoTerminal("i2", 0, i1.getValor(), i1.getValorLogico());
         NoTerminal exp = new NoTerminal("exp", 0, 0);
         NoTerminal s2 = new NoTerminal("s2", u + 2, 0);
-        NoTerminal P = new NoTerminal("P", 0, 0);
+        NoTerminal F = new NoTerminal("F", 0, 0);
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
         analizador.removeNodo(u - 2);
         analizador.adicionarNodo(s4);
         analizador.adicionarNodo(i4);
-        analizador.adicionarNodo(FL);
+        analizador.adicionarNodo(PL);
         analizador.adicionarNodo(s3);
         analizador.adicionarNodo(i3);
         analizador.adicionarNodo(i2);
         analizador.adicionarNodo(exp);
         analizador.adicionarNodo(s2);
-        analizador.adicionarNodo(P);
+        analizador.adicionarNodo(F);
         avance();
     }
 
-    public static void proceso31() { // TODO
+    public static void proceso31() { // ! listo ?
         int u = analizador.ultimo();
+        NoTerminal s1 = analizador.getnode(u - 2);
+        NoTerminal i1 = analizador.getnode(u - 1);
+        NoTerminal nt = analizador.getnode(s1.getDirec());
+        nt.setValor(i1.getValor());
+        nt.setValorLogico(i1.getValorLogico());
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
     }
 
     public static void proceso32() {
         int u = analizador.ultimo();
-        NoTerminal s2 = new NoTerminal("s2", u - 2, 0);
-        NoTerminal ELO = new NoTerminal("ELO", u - 2, 0);
+        NoTerminal s1 = analizador.getnode(u - 1);
+        NoTerminal lp = new NoTerminal(")", 0, 0);
+        NoTerminal s2 = new NoTerminal("s2", s1.getDirec(), 0);
+        NoTerminal ELO = new NoTerminal("ELO", 0, 0);
         analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.adicionarNodo(lp);
         analizador.adicionarNodo(s2);
         analizador.adicionarNodo(ELO);
         avance();
@@ -1037,36 +1711,42 @@ public class ApCompiladorPilaAtributos {
     }
 
     public static void suma() {
-        // NoTerminal nt1, nt2, nt3, nt4;
-        // int u = analizador.ultimo();
-        // nt1 = analizador.getnode(u - 1);
-        // nt2 = analizador.getnode(u - 2);
-        // double sum = nt1.getValor() + nt2.getValor();
-        // nt3 = analizador.getnode(u - 3);
-        // nt4 = analizador.getnode(nt3.getDirec());
-        // nt4.setValor(sum);
-        // // desapilar suma y sus atributos
-        // analizador.removeNodo(u);
-        // analizador.removeNodo(u - 1);
-        // analizador.removeNodo(u - 2);
-        // analizador.removeNodo(u - 3);
+        int u = analizador.ultimo();
+        NoTerminal s3 = analizador.getnode(u - 3);
+        NoTerminal i3 = analizador.getnode(u - 2);
+        NoTerminal i2 = analizador.getnode(u - 1);
+        NoTerminal i4 = analizador.getnode(s3.getDirec());
+        i4.setValor(i3.getValor() + i2.getValor());
 
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
+        analizador.removeNodo(u - 3);
     }
 
-    public static void resta() {
+    public static void resta() { // ! listo ?
 
+        int u = analizador.ultimo();
+        NoTerminal s3 = analizador.getnode(u - 3);
+        NoTerminal i3 = analizador.getnode(u - 2);
+        NoTerminal i2 = analizador.getnode(u - 1);
+        NoTerminal i4 = analizador.getnode(s3.getDirec());
+        i4.setValor(i2.getValor() - i3.getValor());
+
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
+        analizador.removeNodo(u - 3);
     }
 
     public static void mult() {
-        NoTerminal nt1, nt2, nt3, nt4;
         int u = analizador.ultimo();
-        nt1 = analizador.getnode(u - 1);
-        nt2 = analizador.getnode(u - 2);
-        double mul = nt1.getValor() * nt2.getValor();
-        nt3 = analizador.getnode(u - 3);
-        nt4 = analizador.getnode(nt3.getDirec());
-        nt4.setValor(mul);
-        // desapilar suma y sus atributos
+        NoTerminal s3 = analizador.getnode(u - 3);
+        NoTerminal i3 = analizador.getnode(u - 2);
+        NoTerminal i2 = analizador.getnode(u - 1);
+        NoTerminal i4 = analizador.getnode(s3.getDirec());
+        i4.setValor(i3.getValor() * i2.getValor());
+
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
         analizador.removeNodo(u - 2);
@@ -1074,16 +1754,14 @@ public class ApCompiladorPilaAtributos {
 
     }
 
-    public static void div() {
-        NoTerminal nt1, nt2, nt3, nt4;
+    public static void div() { // ! listo ?
         int u = analizador.ultimo();
-        nt1 = analizador.getnode(u - 1);
-        nt2 = analizador.getnode(u - 2);
-        double mul = nt1.getValor() * nt2.getValor();
-        nt3 = analizador.getnode(u - 3);
-        nt4 = analizador.getnode(nt3.getDirec());
-        nt4.setValor(mul);
-        // desapilar suma y sus atributos
+        NoTerminal s3 = analizador.getnode(u - 3);
+        NoTerminal i3 = analizador.getnode(u - 2);
+        NoTerminal i2 = analizador.getnode(u - 1);
+        NoTerminal i4 = analizador.getnode(s3.getDirec());
+        i4.setValor(i2.getValor() / i3.getValor());
+
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
         analizador.removeNodo(u - 2);
@@ -1091,30 +1769,139 @@ public class ApCompiladorPilaAtributos {
 
     }
 
-    public static void exp() {
+    public static void exp() { // ! listo ?
 
+        int u = analizador.ultimo();
+        NoTerminal s3 = analizador.getnode(u - 3);
+        NoTerminal i3 = analizador.getnode(u - 2);
+        NoTerminal i2 = analizador.getnode(u - 1);
+        NoTerminal i4 = analizador.getnode(s3.getDirec());
+        i4.setValor(Math.pow(i2.getValor(), i3.getValor()));
+
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
+        analizador.removeNodo(u - 3);
     }
 
     public static void procOr() {
+        int u = analizador.ultimo();
+        NoTerminal s4 = analizador.getnode(u - 3);
+        NoTerminal i5 = analizador.getnode(u - 2);
+        NoTerminal i4 = analizador.getnode(u - 1);
+        NoTerminal i6 = analizador.getnode(s4.getDirec());
+        i6.setValorLogico(i5.getValorLogico() || i4.getValorLogico());
 
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
+        analizador.removeNodo(u - 3);
     }
 
-    public static void pRelacion() {
+    public static void pRelacional() {
+        int u = analizador.ultimo();
 
+        NoTerminal i1 = analizador.getnode(u);
+        NoTerminal i2 = analizador.getnode(u - 1);
+        NoTerminal i5 = analizador.getnode(u - 5);
+        i5.setValor(i1.getValor());
+        i5.setValorLogico(i1.getValorLogico());
+
+        if (i1.getRelacional())
+            if (i2.getRelacional()) {
+                analizador.removeNodo(u);
+                analizador.removeNodo(u - 1);
+                analizador.removeNodo(u - 2);
+                return;
+            } else {
+                System.out.println("Debe ser el resultado de una expresión relacional 2");
+                System.out.println("Secuencia" + cad + " no se acepta");
+                rechace();
+            }
+        else {
+            System.out.println("Debe ser el resultado de una expresión relacional  1");
+            System.out.println("Secuencia" + cad + " no se acepta");
+            rechace();
+        }
     }
 
-    public void procAnd() {
+    public static void procAnd() {
 
+        int u = analizador.ultimo();
+        NoTerminal s4 = analizador.getnode(u - 3);
+        NoTerminal i5 = analizador.getnode(u - 2);
+        NoTerminal i4 = analizador.getnode(u - 1);
+        NoTerminal i6 = analizador.getnode(s4.getDirec());
+        i6.setValorLogico(i5.getValorLogico() && i4.getValorLogico());
+
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
+        analizador.removeNodo(u - 3);
     }
 
-    public void pComparar() {
+    public static void pComparar() {
+
+        int u = analizador.ultimo();
+
+        NoTerminal i2 = analizador.getnode(u - 1);
+        NoTerminal i3 = analizador.getnode(u - 2);
+        NoTerminal i4 = analizador.getnode(u - 3);
+        NoTerminal s4 = analizador.getnode(u - 4);
+        NoTerminal nt = analizador.getnode(s4.getDirec());
+        switch ((int) i4.getValor()) {
+        case 1:
+            if (i2.getValor() <= i3.getValor())
+                s4.setValorLogico(true);
+            else
+                s4.setValorLogico(false);
+            break;
+        case 2:
+            if (i2.getValor() < i3.getValor())
+                s4.setValorLogico(true);
+            else
+                s4.setValorLogico(false);
+            break;
+        case 3:
+            if (i2.getValor() >= i3.getValor())
+                s4.setValorLogico(true);
+            else
+                s4.setValorLogico(false);
+            break;
+        case 4:
+            if (i2.getValor() > i3.getValor())
+                s4.setValorLogico(true);
+            else
+                s4.setValorLogico(false);
+            break;
+        case 5:
+            if (i2.getValor() == i3.getValor())
+                s4.setValorLogico(true);
+            else
+                s4.setValorLogico(false);
+            break;
+        case 6:
+            if (i2.getValor() != i3.getValor())
+                s4.setValorLogico(true);
+            else
+                s4.setValorLogico(false);
+        }
+        s4.setRelacional(true);
+        nt.setRelacional(s4.getRelacional());
+        nt.setValorLogico(s4.getValorLogico());
+        nt.setValor(s4.getValor());
+        analizador.removeNodo(u);
+        analizador.removeNodo(u - 1);
+        analizador.removeNodo(u - 2);
+        analizador.removeNodo(u - 3);
+        analizador.removeNodo(u - 4);
     }
 
     public static void resultado() {
         NoTerminal nt;
         int u = analizador.ultimo();
         nt = analizador.getnode(u - 1);
-        System.out.println("Resultado =" + nt.getValor());
+        System.out.println("Resultado Aritmentico = " + nt.getValor() + " Resultado Logico = " + nt.getValorLogico());
         analizador.removeNodo(u);
         analizador.removeNodo(u - 1);
     }
@@ -1249,13 +2036,8 @@ public class ApCompiladorPilaAtributos {
             default:
                 b = false;
             }
-
         }
         return b;
-    }
-
-    public static void resultado(double res) {
-        System.out.println("Resultado " + res);
     }
 
     public static void avance() {
@@ -1264,7 +2046,6 @@ public class ApCompiladorPilaAtributos {
             sim = lex1.darElemento(indice).darTipo();
             cadavance = cadavance + sim;
             System.out.println("Cadena procesada " + cadavance);
-
         }
     }
 
