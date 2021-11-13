@@ -8,14 +8,14 @@ public class ApCompiladorPilaAtributos {
 
     // static String cad="((((5+3)))+5+3+2)-1¬";
     static String cad1 = "0123456789.";
-
-    static String cad = "(5!=3)&(1==1)|(1==1)¬";
+    // ()|(1*2==1)
+    static String cad = "5+(3*2/(7^2))¬";
     static int indice = 0;
     static char sim = ' ';
     static Lexico lex1 = new Lexico();
     static String cadavance = "";
     static Analizador analizador = new Analizador();
-    static final boolean DEBUG = true;
+    static final boolean DEBUG = false;
 
     public static void main(String[] args) {
 
@@ -1775,9 +1775,9 @@ public class ApCompiladorPilaAtributos {
         NoTerminal i1 = analizador.getnode(u - 1);
         NoTerminal i2 = analizador.getnode(u - 2);
         NoTerminal i5 = analizador.getnode(u - 5);
-        i5.setValor(i1.getValor());
-        i5.setValorLogico(i1.getValorLogico());
-        i5.setRelacional(i1.getRelacional());
+        i5.setValor(i2.getValor());
+        i5.setValorLogico(i2.getValorLogico());
+        i5.setRelacional(i2.getRelacional());
         if (i1.getRelacional())
             if (i2.getRelacional()) {
                 analizador.removeNodo(u);
